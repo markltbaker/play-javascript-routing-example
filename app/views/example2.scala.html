@@ -1,0 +1,16 @@
+@()(implicit req: RequestHeader) 
+
+@main("Play Javascript Routing example 2") {
+    
+    <h1>Example 2</h1>
+
+    <p>this is the same as the first example but uses an 'embedded' javascript router. View page source to see the difference!</p>
+
+    @*** note that we needed to add (implicit req: RequestHeader)  to the parameters on line 1 for this to work **@
+    <!-- the embedded router -->
+    @helper.javascriptRouter("jsRoutes")(
+      routes.javascript.Echo.echo
+    )
+
+    @commonExample()        
+}

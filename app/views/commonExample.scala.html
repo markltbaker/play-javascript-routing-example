@@ -1,0 +1,35 @@
+@()
+
+@** An interactive example using a simple 'echo' service **@
+<!-- a test echo service UI -->
+<h3>Test me</h3>
+<input type="text" id="text" value="some text"/>
+<button id="submitBtn">Click me</button>
+<h3>Results</h3>
+<hr/>
+<div id="results"></div>
+<hr/>
+<p>URL for above call was: <span id="url"></url></p>
+
+<script>
+$("#submitBtn").click(function() {
+    // get the text we want to send
+    var text = $("#text").val();
+
+    // call the javascript router to produce an endpoint
+    var endpoint = jsRoutes.controllers.Echo.echo(text);
+
+    // this has a 'url' property for direct use or custom jQuery calls
+    $("#url").text(endpoint.url);
+
+    // you can also call using jQuery using .ajax()
+    endpoint.ajax({
+        success: function(data) {
+            $("#results").text(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("ERRPR", jqXHR, textStatus, errorThrown);
+        }
+    });
+});
+</script>

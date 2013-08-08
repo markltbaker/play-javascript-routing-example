@@ -1,7 +1,14 @@
-@(message: String)
+@()
 
-@main("Welcome to Play 2.1") {
+@main("Play Javascript Routing example") {
     
-    @play20.welcome(message)
-    
+    <p>Here are some examples of Play javascript routing -- for more info <a href="http://www.playframework.com/documentation/2.1.x/ScalaJavascriptRouting">see the docs</a></p>
+
+    <!-- import the generated javascript routes -->
+    <script type="text/javascript" src="@routes.JavascriptRoutes.all"></script>
+
+    @commonExample()
+
+    <p><a href="@routes.Application.example2()">A second example</a></p>
+
 }
